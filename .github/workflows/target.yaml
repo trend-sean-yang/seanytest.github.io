@@ -20,7 +20,7 @@ env:
 
 jobs:
   build:
-    runs-on: ebf-pod-ubuntu-2004@${{ github.run_id }}-helm-check
+    runs-on: ubuntu-latest
     steps:
       - name: Print Inputs
         run: |

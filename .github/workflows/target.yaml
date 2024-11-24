@@ -1,0 +1,27 @@
+name: Target Workflow
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      param1:
+        description: "Parameter 1"
+        required: true
+        default: "default_value"
+      param2:
+        description: "Parameter 2"
+        required: false
+  
+      
+permissions:
+  id-token: write
+  contents: read
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
+jobs:
+  build:
+    runs-on: ebf-pod-ubuntu-2004@${{ github.run_id }}-helm-check
+    steps:
+      - name: Print Inputs
+        run: |
+          echo "Param1: ${{ github.event.inputs.param1 }}"
